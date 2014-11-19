@@ -73,8 +73,7 @@ public class WorldCanvas extends JPanel {
 	}
 
 	protected Rectangle getView() {
-		// TODO not implemented
-		return null;
+		return new Rectangle(offset.x, offset.y, getWidth(), getHeight());
 	}
 
 	/**
@@ -137,8 +136,13 @@ public class WorldCanvas extends JPanel {
 	}
 
 	protected boolean isBoxVisible(Point center, int edge_length, Graphics g) {
-		// TODO not implemented
-		return true;
+		Rectangle view = getView();
+		
+		// calculate the top-left and bottom-right point
+		Point tl = new Point(center.x - BOX_SIZE / 2, center.y - BOX_SIZE / 2);
+		Point br = new Point(tl.x + BOX_SIZE, tl.y + BOX_SIZE);
+		
+		return view.contains(tl) || view.contains(br);
 	}
 
 }
