@@ -53,8 +53,10 @@ public class SmartStringComparator implements Comparator<String> {
 	}
 
 	public static int compareToken(Token a, Token b) {
-		// TODO not implemented
-		return 0;
+		if (a.type == TokenType.NUMBER && b.type == TokenType.NUMBER)
+			return Long.decode(a.value).compareTo(Long.decode(b.value));
+		else
+			return a.value.compareTo(b.value);
 	}
 
 	public static class Token {
