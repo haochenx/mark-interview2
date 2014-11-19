@@ -47,8 +47,8 @@ public class WorldCanvas extends JPanel {
 			int start_x = offset.x % GRID_SIZE;
 			int start_y = offset.y % GRID_SIZE;
 
-			int x_count = w / GRID_SIZE;
-			int y_count = h / GRID_SIZE;
+			int x_count = w / GRID_SIZE + 1;
+			int y_count = h / GRID_SIZE + 1;
 
 			drawGrid(start_x, start_y, x_count, y_count, g);
 		}
@@ -92,7 +92,23 @@ public class WorldCanvas extends JPanel {
 	 */
 	protected void drawGrid(int start_x, int start_y, int x_count, int y_count,
 			Graphics g) {
-		// TODO not implemented
+		int w = getWidth();
+		int h = getHeight();
+		Color oldColor = g.getColor();
+		
+		g.setColor(Color.GRAY);
+		
+		for (int ix = 0; ix < x_count; ++ix) {
+			int x = ix * GRID_SIZE + start_x;
+			g.drawLine(x, 0, x, h-1);
+		}
+		for (int iy = 0; iy < y_count; ++iy) {
+			int y = iy * GRID_SIZE + start_y;
+			g.drawLine(0, y, w-1, y);
+			
+		}
+		
+		g.setColor(oldColor);
 	}
 
 	protected void drawBox(Point center, int edge_length, Color color, Graphics g) {
