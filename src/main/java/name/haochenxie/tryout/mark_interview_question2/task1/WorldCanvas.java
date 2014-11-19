@@ -18,7 +18,7 @@ public class WorldCanvas extends JPanel {
 	 * the coordinate of the point at the view's top left should be on the
 	 * canvas
 	 */
-	protected Point offset;
+	private Point offset;
 
 	public WorldCanvas(int offset_x, int offset_y) {
 		this.offset = new Point(offset_x, offset_y);
