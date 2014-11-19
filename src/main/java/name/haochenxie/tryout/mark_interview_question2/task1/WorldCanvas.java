@@ -95,29 +95,50 @@ public class WorldCanvas extends JPanel {
 		int w = getWidth();
 		int h = getHeight();
 		Color oldColor = g.getColor();
-		
+
 		g.setColor(Color.GRAY);
-		
+
 		for (int ix = 0; ix < x_count; ++ix) {
 			int x = ix * GRID_SIZE + start_x;
-			g.drawLine(x, 0, x, h-1);
+			g.drawLine(x, 0, x, h - 1);
 		}
 		for (int iy = 0; iy < y_count; ++iy) {
 			int y = iy * GRID_SIZE + start_y;
-			g.drawLine(0, y, w-1, y);
-			
+			g.drawLine(0, y, w - 1, y);
+
 		}
+
+		g.setColor(oldColor);
+	}
+
+	/**
+	 *
+	 * @param center
+	 *            center of the box on the CANVAS (not the view)
+	 * @param edge_length
+	 *            edge length
+	 * @param color
+	 *            fill color
+	 * @param g
+	 *            the graphics handler
+	 */
+	protected void drawBox(Point center, int edge_length, Color color,
+			Graphics g) {
+		Color oldColor = g.getColor();
+		
+		// calculate the top-left corner on the view
+		int x = center.x + offset.x - BOX_SIZE / 2;
+		int y = center.y + offset.y - BOX_SIZE / 2;
+
+		g.setColor(color);
+		g.fillRect(x, y, BOX_SIZE, BOX_SIZE);
 		
 		g.setColor(oldColor);
 	}
 
-	protected void drawBox(Point center, int edge_length, Color color, Graphics g) {
-		// TODO not implemented
-	}
-
 	protected boolean isBoxVisible(Point center, int edge_length, Graphics g) {
 		// TODO not implemented
-		return false;
+		return true;
 	}
 
 }
