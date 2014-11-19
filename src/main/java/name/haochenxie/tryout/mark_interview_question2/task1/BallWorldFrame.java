@@ -1,7 +1,6 @@
 package name.haochenxie.tryout.mark_interview_question2.task1;
 
 import java.awt.CardLayout;
-import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 
@@ -31,7 +30,7 @@ public class BallWorldFrame extends JFrame {
 		addMouseListener(mouseDragListener);
 		addMouseMotionListener(mouseDragListener);
 		
-		setSize(new Dimension(400, 400));
+		pack();
 	}
 	
 	private void onMouseDragged(Point original, Point current) {

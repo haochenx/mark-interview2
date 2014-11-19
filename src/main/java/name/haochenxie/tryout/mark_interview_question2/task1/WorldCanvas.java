@@ -1,6 +1,7 @@
 package name.haochenxie.tryout.mark_interview_question2.task1;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -13,6 +14,7 @@ public class WorldCanvas extends JPanel {
 	private static final int BOX_SIZE = 40;
 
 	private static final long serialVersionUID = -955003109057302468L;
+	private static final Dimension PREFERED_SIZE = new Dimension(400, 400);
 
 	/**
 	 * the coordinate of the point at the view's top left should be on the
@@ -35,6 +37,11 @@ public class WorldCanvas extends JPanel {
 	public void setOffset(Point offset) {
 		this.offset = offset;
 		repaint();
+	}
+	
+	@Override
+	public Dimension getPreferredSize() {
+		return PREFERED_SIZE;
 	}
 
 	@Override
