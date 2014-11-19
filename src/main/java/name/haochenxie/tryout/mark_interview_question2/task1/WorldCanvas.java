@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 public class WorldCanvas extends JPanel {
 
 	private static final int GRID_SIZE = 40;
-	private static final int CIRCLE_SIZE = 40;
+	private static final int BOX_SIZE = 40;
 
 	private static final long serialVersionUID = -955003109057302468L;
 
@@ -66,8 +66,8 @@ public class WorldCanvas extends JPanel {
 				Color color = colors[i];
 				Point center = centers[i];
 
-				if (isCircleVisible(center, CIRCLE_SIZE, g))
-					drawCircle(center, CIRCLE_SIZE, color, g);
+				if (isBoxVisible(center, BOX_SIZE, g))
+					drawBox(center, BOX_SIZE, color, g);
 			}
 		}
 	}
@@ -95,11 +95,11 @@ public class WorldCanvas extends JPanel {
 		// TODO not implemented
 	}
 
-	protected void drawCircle(Point pos, double radius, Color color, Graphics g) {
+	protected void drawBox(Point center, int edge_length, Color color, Graphics g) {
 		// TODO not implemented
 	}
 
-	protected boolean isCircleVisible(Point pos, double radius, Graphics g) {
+	protected boolean isBoxVisible(Point center, int edge_length, Graphics g) {
 		// TODO not implemented
 		return false;
 	}
