@@ -46,8 +46,87 @@ public class SmartStringComparatorTest {
 	}
 
 	@Test
-	public void testCompareToken() {
-		fail("Not yet implemented");
+	public void testCompareTokenStrStr() {
+		Token[] groupA = new Token[] { 
+				new Token(TokenType.STRING, "abc"), 
+				new Token(TokenType.STRING, "abc"), 
+				new Token(TokenType.STRING, "acb"), 
+		};
+		Token[] groupB = new Token[] {
+				new Token(TokenType.STRING, "abc"), 
+				new Token(TokenType.STRING, "acb"), 
+				new Token(TokenType.STRING, "abc"), 
+		};
+		
+		int[] expected = new int[] {
+				0, -1, 1
+		};
+		
+		for (int i = 0; i < groupA.length; ++i) {
+			int result = SmartStringComparator.compareToken(groupA[i], groupB[i]);
+			
+			if (expected[i] == 0)
+				assertEquals(0, result);
+			else
+				assertTrue(expected[i] * result > 0);
+		}
+	}
+
+	@Test
+	public void testCompareTokenNumNum() {
+		Token[] groupA = new Token[] { 
+				new Token(TokenType.NUMBER, "123"), 
+				new Token(TokenType.NUMBER, "003"), 
+				new Token(TokenType.NUMBER, "123"),
+				new Token(TokenType.NUMBER, "321"), 
+				new Token(TokenType.NUMBER, "12"),
+		};
+		Token[] groupB = new Token[] {
+				new Token(TokenType.NUMBER, "123"), 
+				new Token(TokenType.NUMBER, "003"), 
+				new Token(TokenType.NUMBER, "321"), 
+				new Token(TokenType.NUMBER, "123"), 
+				new Token(TokenType.NUMBER, "100"),
+		};
+		
+		int[] expected = new int[] {
+				0, 0, -1, 1, -1
+		};
+		
+		for (int i = 0; i < groupA.length; ++i) {
+			int result = SmartStringComparator.compareToken(groupA[i], groupB[i]);
+			
+			if (expected[i] == 0)
+				assertEquals(0, result);
+			else
+				assertTrue(expected[i] * result > 0);
+		}
+	}
+	
+	@Test
+	public void testCompareTokenStrNum() {
+		Token[] groupA = new Token[] { 
+				new Token(TokenType.NUMBER, "123"), 
+				new Token(TokenType.STRING, "ABC"), 
+				new Token(TokenType.STRING, "ABCD"), 
+		};
+		Token[] groupB = new Token[] {
+				new Token(TokenType.STRING, "ABC"), 
+				new Token(TokenType.NUMBER, "123"), 
+				new Token(TokenType.NUMBER, "02"), 
+		};
+		int[] expected = new int[] {
+				-1, 1, 1
+		};
+		
+		for (int i = 0; i < groupA.length; ++i) {
+			int result = SmartStringComparator.compareToken(groupA[i], groupB[i]);
+			
+			if (expected[i] == 0)
+				assertEquals(0, result);
+			else
+				assertTrue(expected[i] * result > 0);
+		}
 	}
 
 }
