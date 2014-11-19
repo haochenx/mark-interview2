@@ -40,15 +40,15 @@ public class WorldCanvas extends JPanel {
 		return null;
 	}
 	
-	protected void drawGrid(Graphics g) {
+	protected void drawGrid(int start_x, int start_y, int x_count, int y_count, Graphics g) {
 		// TODO not implemented
 	}
 	
-	protected void drawCircle(Point pos, double radius, Color color) {
+	protected void drawCircle(Point pos, double radius, Color color, Graphics g) {
 		// TODO not implemented
 	}
 
-	protected boolean isCircleVisible(Point pos, double radius) {
+	protected boolean isCircleVisible(Point pos, double radius, Graphics g) {
 		// TODO not implemented
 		return false;
 	}
