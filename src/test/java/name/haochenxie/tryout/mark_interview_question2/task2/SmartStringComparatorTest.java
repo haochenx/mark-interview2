@@ -10,6 +10,8 @@ import name.haochenxie.tryout.mark_interview_question2.task2.SmartStringComparat
 import org.junit.Test;
 
 public class SmartStringComparatorTest {
+	
+	protected SmartStringComparator comp = new SmartStringComparator();
 
 	@Test
 	public void testCompare() {
@@ -19,7 +21,7 @@ public class SmartStringComparatorTest {
 		String[] expected = new String[] { "ABC1", "ABC3", "ABC30", "ABC100",
 				"Py14-1", "Py14-2", "Py14-12", "Py130-1a" };
 		
-		Arrays.sort(sample, new SmartStringComparator());
+		Arrays.sort(sample, comp);
 		
 		assertArrayEquals(expected, sample);
 	}
