@@ -44,8 +44,8 @@ public class WorldCanvas extends JPanel {
 
 		// calculate grid parameters and draw it
 		{
-			int start_x = offset.x % GRID_SIZE;
-			int start_y = offset.y % GRID_SIZE;
+			int start_x = - offset.x % GRID_SIZE;
+			int start_y = - offset.y % GRID_SIZE;
 
 			int x_count = w / GRID_SIZE + 1;
 			int y_count = h / GRID_SIZE + 1;
@@ -127,8 +127,8 @@ public class WorldCanvas extends JPanel {
 		Color oldColor = g.getColor();
 		
 		// calculate the top-left corner on the view
-		int x = center.x + offset.x - BOX_SIZE / 2;
-		int y = center.y + offset.y - BOX_SIZE / 2;
+		int x = center.x - offset.x - BOX_SIZE / 2;
+		int y = center.y - offset.y - BOX_SIZE / 2;
 
 		g.setColor(color);
 		g.fillRect(x, y, BOX_SIZE, BOX_SIZE);
