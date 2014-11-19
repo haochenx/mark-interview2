@@ -4,6 +4,9 @@ import static org.junit.Assert.*;
 
 import java.util.Arrays;
 
+import name.haochenxie.tryout.mark_interview_question2.task2.SmartStringComparator.Token;
+import name.haochenxie.tryout.mark_interview_question2.task2.SmartStringComparator.TokenType;
+
 import org.junit.Test;
 
 public class SmartStringComparatorTest {
@@ -23,7 +26,21 @@ public class SmartStringComparatorTest {
 
 	@Test
 	public void testTokenize() {
-		fail("Not yet implemented");
+		
+		String sample = "Py13-25ac-bd007acb2";
+		
+		Token[] expected = new Token[] {
+				new Token(TokenType.STRING, "Py"),
+				new Token(TokenType.NUMBER, "13"),
+				new Token(TokenType.STRING, "-"),
+				new Token(TokenType.NUMBER, "25"),
+				new Token(TokenType.STRING, "ac-bd"),
+				new Token(TokenType.NUMBER, "007"),
+				new Token(TokenType.STRING, "acb"),
+				new Token(TokenType.NUMBER, "2"),
+		};
+		
+		assertArrayEquals(expected, SmartStringComparator.tokenize(sample));
 	}
 
 	@Test
