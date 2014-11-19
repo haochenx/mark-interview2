@@ -9,9 +9,26 @@ import java.util.Comparator;
 public class SmartStringComparator implements Comparator<String> {
 
 	@Override
-	public int compare(String o1, String o2) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int compare(String str1, String str2) {
+		Token[] tokens1 = tokenize(str1);
+		Token[] tokens2 = tokenize(str2);
+
+		int len1 = tokens1.length;
+		int len2 = tokens2.length;
+
+		int minSize = Math.min(len1, len2);
+		for (int i = 0; i < minSize; ++i) {
+			int comp = compareToken(tokens1[i], tokens2[i]);
+			if (comp != 0)
+				return comp;
+		}
+
+		if (len1 < len2)
+			return -1;
+		else if (len1 > len2)
+			return 1;
+		else
+			return 0;
 	}
 	
 	public static Token[] tokenize(String str) {
