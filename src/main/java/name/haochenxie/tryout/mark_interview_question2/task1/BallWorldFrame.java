@@ -35,11 +35,10 @@ public class BallWorldFrame extends JFrame {
 	}
 	
 	private void onMouseDragged(Point original, Point current) {
-		// TODO not implemented
-		System.out.println(
-				String.format("(%d, %d) -> (%d, %d)",
-						original.x, original.y,
-						current.x, current.y));
+		Point offset = canvas.getOffset();
+		canvas.setOffset(new Point(
+				offset.x + (current.x - original.x),
+				offset.y + (current.y - original.y)));
 	}
 	
 	private class MouseDragListener extends MouseInputAdapter {
